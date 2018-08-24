@@ -4,7 +4,13 @@ const PORT = process.env.PORT || 5000 ;
 
 var exphbs  = require('express-handlebars');
 
+
 var app = express();
+
+const knex = require('./db/knex');
+
+
+var fortune = require('./lib/fortune');
 
 app.engine('handlebars', 
            exphbs({defaultLayout: 'main'}));
@@ -27,7 +33,6 @@ app.post('/process', function(req,res){
 });
 
 
-var fortune = require('./lib/fortune');
 
 //usa modulos de la libreria fortune.js
 app.get('/about', (req, res) => 
@@ -37,6 +42,14 @@ app.get('/about', (req, res) =>
 //archivos estáticos
 app.use(express.static(path.join(__dirname,'/public')));
 
+
+app.get("/user", function (req,res){
+	
+	knex('usuarios')
+	.select()
+	.then( objCollectUsers => {res.render("user/index", {objUsers: objCollectUsers});});
+
+});
 
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
