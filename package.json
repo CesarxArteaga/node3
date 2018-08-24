@@ -1,5 +1,5 @@
 {
-  "name": "3.taller_express_handlerbar",
+  "name": "node3",
   "version": "1.0.0",
   "description": "crud classes with nodejs expres hbs postgresql knex",
   "engines": {
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegocarrera/nodeDiego"
+    "url": "https://github.com/CesarxArteaga/node3"
   },
   "keywords": [
     "node",
